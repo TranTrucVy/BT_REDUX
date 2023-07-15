@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { ActionDaDat, ActionHuyGhe } from '../redux/action/ActionBooking'
 import Swal from 'sweetalert2'
+import MyComponent from '../assets/img/chuccauzuize.jpg';
+
 
 class InfoChair extends Component {
     render() {
@@ -10,8 +12,8 @@ class InfoChair extends Component {
             <div className='mt-2'>
                 <div>
                     <button className="gheDuocChon"></button><span className="text-light" style={{ fontSize: '30px' }}>Ghế Đã Chọn</span> <br />
-                    <button className="gheDangChon"></button><span className="text-light" style={{ fontSize: '30px' }}>Ghế Đã Chọn</span> <br />
-                    <button style={{ marginLeft: 0 }} className="ghe"></button><span className="text-light" style={{ fontSize: '30px' }}>Ghế Đã Chọn</span>
+                    <button className="gheDangChon"></button><span className="text-light" style={{ fontSize: '30px' }}>Ghế Đang Chọn</span> <br />
+                    <button style={{ marginLeft: 0 }} className="ghe"></button><span className="text-light" style={{ fontSize: '30px' }}>Ghế Chưa Chọn</span>
                 </div>
                 <div className='mt-1'>
                     <table className="table" border='2'>
@@ -62,14 +64,14 @@ class InfoChair extends Component {
                     this.props.dispatch(ActionDaDat(),
 
                         Swal.fire({
-                            title: `Cho xin tiền vé bạn ê  ${(this.props.DanhSachGheDangDat.reduce((total, chair, index) => {
+                            title: `Cho xin tiền vé bạn ơi  ${(this.props.DanhSachGheDangDat.reduce((total, chair, index) => {
                                 if (chair.daDat) {
                                     return total
                                 }
 
                                 return total += chair.gia
                             }, 0).toLocaleString())}VND`,
-                            imageUrl: './img/meomeomeo.webp',
+                            imageUrl: '',
                             imageHeight: 300,
                             imageAlt: 'A tall image',
                             width: 600,
@@ -92,7 +94,7 @@ class InfoChair extends Component {
 }
 const mapStateToProps = (state) => {
     return {
-        DanhSachGheDangDat: state.BookingTickietReducer.DanhSachGheDangDat
+        DanhSachGheDangDat: state.booking.DanhSachGheDangDat
     }
 }
 

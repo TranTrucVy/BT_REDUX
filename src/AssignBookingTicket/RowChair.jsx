@@ -72,7 +72,7 @@ import {ActionBooking} from '../redux/action/ActionBooking'
 }
 const mapStateToProps = (state)=>{
     return {
-        DanhSachGheDangDat: state.BookingTickietReducer.DanhSachGheDangDat
+        DanhSachGheDangDat: state.booking.DanhSachGheDangDat
     }
 }
 
